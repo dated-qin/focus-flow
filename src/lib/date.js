@@ -3,7 +3,11 @@ export function formatMinutes(minutes) {
 }
 
 export function getTodayDateString() {
-  return new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 export function formatDateLabel(value) {
@@ -17,4 +21,14 @@ export function formatDateLabel(value) {
     day: "numeric",
     year: "numeric"
   });
+}
+
+export function toLocalDateKey(input) {
+  const date = new Date(input);
+  if (Number.isNaN(date.getTime())) return "";
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }

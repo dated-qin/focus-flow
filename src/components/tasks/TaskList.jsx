@@ -1,8 +1,9 @@
 import TaskItem from "./TaskItem";
+import { zhCN } from "../../i18n/zh-CN";
 
 function TaskList({ tasks, onToggleTask, onDeleteTask, onUpdateTask }) {
   if (tasks.length === 0) {
-    return <section className="task-list__empty">No tasks found.</section>;
+    return <section className="task-list__empty">{zhCN.tasks.empty}</section>;
   }
 
   return (

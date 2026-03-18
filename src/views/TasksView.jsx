@@ -3,6 +3,7 @@ import TaskFilter from "../components/tasks/TaskFilter";
 import TaskForm from "../components/tasks/TaskForm";
 import TaskList from "../components/tasks/TaskList";
 import useTasks from "../hooks/useTasks";
+import { zhCN } from "../i18n/zh-CN";
 import {
   createTask,
   isValidTaskDueDate,
@@ -54,15 +55,15 @@ function TasksView() {
     const normalizedDueDate = normalizeTaskDueDate(dueDate);
 
     if (!isValidTaskTitle(normalizedTitle)) {
-      return `Task title must be 1-${MAX_TASK_TITLE_LENGTH} characters.`;
+      return zhCN.tasks.errors.invalidTitleLength(MAX_TASK_TITLE_LENGTH);
     }
 
     if (!isValidTaskDueDate(normalizedDueDate)) {
-      return "Invalid due date.";
+      return zhCN.tasks.errors.invalidDueDate;
     }
 
     if (hasDuplicateTitle(normalizedTitle)) {
-      return "Task already exists.";
+      return zhCN.tasks.errors.duplicate;
     }
 
     setTasks((prevTasks) => [...prevTasks, createTask({ title: normalizedTitle, dueDate: normalizedDueDate })]);
@@ -86,15 +87,15 @@ function TasksView() {
     const normalizedDueDate = normalizeTaskDueDate(dueDate);
 
     if (!isValidTaskTitle(normalizedTitle)) {
-      return `Task title must be 1-${MAX_TASK_TITLE_LENGTH} characters.`;
+      return zhCN.tasks.errors.invalidTitleLength(MAX_TASK_TITLE_LENGTH);
     }
 
     if (!isValidTaskDueDate(normalizedDueDate)) {
-      return "Invalid due date.";
+      return zhCN.tasks.errors.invalidDueDate;
     }
 
     if (hasDuplicateTitle(normalizedTitle, taskId)) {
-      return "Task already exists.";
+      return zhCN.tasks.errors.duplicate;
     }
 
     setTasks((prevTasks) =>
@@ -119,7 +120,7 @@ function TasksView() {
   };
 
   const handleClearAll = () => {
-    const confirmed = window.confirm("Delete all tasks? This cannot be undone.");
+    const confirmed = window.confirm(zhCN.tasks.confirmClearAll);
     if (!confirmed) return;
 
     setTasks([]);
@@ -128,8 +129,8 @@ function TasksView() {
   return (
     <main className="page">
       <header className="page-header">
-        <h1 className="page-title">Tasks</h1>
-        <p className="page-subtitle">Capture, schedule, and close your work with less friction.</p>
+        <h1 className="page-title">{zhCN.tasks.title}</h1>
+        <p className="page-subtitle">{zhCN.tasks.subtitle}</p>
       </header>
       <TaskForm onCreateTask={handleCreateTask} />
       <TaskFilter

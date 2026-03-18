@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { zhCN } from "../../i18n/zh-CN";
 import { formatDateLabel, getTodayDateString } from "../../lib/date";
 
 function TaskItem({ task, onToggleTask, onDeleteTask, onUpdateTask }) {
@@ -60,7 +61,7 @@ function TaskItem({ task, onToggleTask, onDeleteTask, onUpdateTask }) {
                   setDraftTitle(event.target.value);
                 }}
                 onKeyDown={handleKeyDown}
-                aria-label="Edit task title"
+                aria-label={zhCN.tasks.aria.editTitle}
                 autoFocus
               />
               <input
@@ -70,7 +71,7 @@ function TaskItem({ task, onToggleTask, onDeleteTask, onUpdateTask }) {
                   if (error) setError("");
                   setDraftDueDate(event.target.value);
                 }}
-                aria-label="Edit task due date"
+                aria-label={zhCN.tasks.aria.editDueDate}
               />
             </div>
           ) : (
@@ -80,7 +81,7 @@ function TaskItem({ task, onToggleTask, onDeleteTask, onUpdateTask }) {
               </span>
               {task.dueDate ? (
                 <span className={isOverdue ? "task-item__due task-item__due--overdue" : "task-item__due"}>
-                  {isOverdue ? "Overdue" : "Due"} {formatDateLabel(task.dueDate)}
+                  {isOverdue ? zhCN.tasks.due.overdue : zhCN.tasks.due.due} {formatDateLabel(task.dueDate)}
                 </span>
               ) : null}
             </div>
@@ -90,19 +91,19 @@ function TaskItem({ task, onToggleTask, onDeleteTask, onUpdateTask }) {
           {isEditing ? (
             <>
               <button type="button" onClick={saveEditing}>
-                Save
+                {zhCN.tasks.actions.save}
               </button>
               <button type="button" onClick={cancelEditing}>
-                Cancel
+                {zhCN.tasks.actions.cancel}
               </button>
             </>
           ) : (
             <button type="button" onClick={startEditing}>
-              Edit
+              {zhCN.tasks.actions.edit}
             </button>
           )}
           <button type="button" onClick={() => onDeleteTask(task.id)}>
-            Delete
+            {zhCN.tasks.actions.delete}
           </button>
         </div>
       </article>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "../base/Button";
 import Input from "../base/Input";
+import { zhCN } from "../../i18n/zh-CN";
 import { MAX_TASK_TITLE_LENGTH } from "../../lib/taskHelpers";
 
 function TaskForm({ onCreateTask }) {
@@ -31,8 +32,8 @@ function TaskForm({ onCreateTask }) {
             if (error) setError("");
             setTitle(event.target.value);
           }}
-          placeholder="Add a task"
-          aria-label="Task title"
+          placeholder={zhCN.tasks.placeholder}
+          aria-label={zhCN.tasks.aria.title}
           maxLength={MAX_TASK_TITLE_LENGTH}
         />
         <Input
@@ -42,9 +43,9 @@ function TaskForm({ onCreateTask }) {
             if (error) setError("");
             setDueDate(event.target.value);
           }}
-          aria-label="Task due date"
+          aria-label={zhCN.tasks.aria.dueDate}
         />
-        <Button type="submit">Add</Button>
+        <Button type="submit">{zhCN.tasks.add}</Button>
       </form>
       <p className="task-form__meta">{title.trim().length}/{MAX_TASK_TITLE_LENGTH}</p>
       {error ? <p className="task-form__error">{error}</p> : null}

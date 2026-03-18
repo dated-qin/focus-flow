@@ -1,10 +1,13 @@
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { AppSettingsProvider } from "./contexts/AppSettingsContext";
 import AppRoutes from "./routes";
 
 function App() {
   return (
     <ThemeProvider>
-      <AppRoutes />
+      <AppSettingsProvider>
+        <AppRoutes />
+      </AppSettingsProvider>
     </ThemeProvider>
   );
 }
