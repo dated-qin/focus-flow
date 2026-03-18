@@ -2,11 +2,12 @@ import { useState } from "react";
 import Button from "../base/Button";
 import Input from "../base/Input";
 import { zhCN } from "../../i18n/zh-CN";
+import { getTodayDateString } from "../../lib/date";
 import { MAX_TASK_TITLE_LENGTH } from "../../lib/taskHelpers";
 
 function TaskForm({ onCreateTask }) {
   const [title, setTitle] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(getTodayDateString());
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
@@ -20,7 +21,7 @@ function TaskForm({ onCreateTask }) {
 
     setError("");
     setTitle("");
-    setDueDate("");
+    setDueDate(getTodayDateString());
   };
 
   return (
