@@ -1,18 +1,87 @@
 @import "./variables.css";
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: radial-gradient(circle at top right, #fff7e8 0%, var(--bg) 45%);
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(900px 500px at 90% -10%, #ffe9c7 0%, transparent 60%),
+    radial-gradient(700px 450px at -10% 110%, #f3dfcc 0%, transparent 60%),
+    var(--bg);
   color: var(--fg);
+  min-height: 100vh;
 }
 
 .top-nav {
   display: flex;
-  gap: 12px;
-  padding: 16px;
+  gap: 10px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--surface) 92%, #fff 8%);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  z-index: 20;
+}
+
+.top-nav__link {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.top-nav__link:hover {
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--fg);
+}
+
+.top-nav__link--active {
+  color: #fff;
+  background: var(--primary);
 }
 
 .page {
-  padding: 16px;
+  width: min(880px, 100% - 32px);
+  margin: 18px auto 28px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface) 96%, white 4%);
+  box-shadow: var(--shadow-soft);
+}
+
+.page-header {
+  margin-bottom: 14px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: 0.2px;
+}
+
+.page-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+@media (max-width: 720px) {
+  .top-nav {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 12px;
+  }
+
+  .page {
+    width: calc(100% - 20px);
+    margin: 10px auto 18px;
+    padding: 14px;
+  }
 }

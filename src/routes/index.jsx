@@ -1,4 +1,4 @@
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { NavLink, Navigate, Route, Routes } from "react-router-dom";
 import TasksView from "../views/TasksView";
 import StatsView from "../views/StatsView";
 import SettingsView from "../views/SettingsView";
@@ -7,9 +7,18 @@ function AppRoutes() {
   return (
     <>
       <nav className="top-nav">
-        <Link to="/tasks">Tasks</Link>
-        <Link to="/stats">Stats</Link>
-        <Link to="/settings">Settings</Link>
+        <NavLink to="/tasks" className={({ isActive }) => (isActive ? "top-nav__link top-nav__link--active" : "top-nav__link")}>
+          Tasks
+        </NavLink>
+        <NavLink to="/stats" className={({ isActive }) => (isActive ? "top-nav__link top-nav__link--active" : "top-nav__link")}>
+          Stats
+        </NavLink>
+        <NavLink
+          to="/settings"
+          className={({ isActive }) => (isActive ? "top-nav__link top-nav__link--active" : "top-nav__link")}
+        >
+          Settings
+        </NavLink>
       </nav>
       <Routes>
         <Route path="/" element={<Navigate to="/tasks" replace />} />

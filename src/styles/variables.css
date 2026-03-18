@@ -2,4 +2,10 @@
   --bg: #f6f4ef;
   --fg: #1f1f1f;
   --primary: #c44d2d;
+  --surface: #fffdf8;
+  --surface-strong: #fff;
+  --line: #d9d4ca;
+  --muted: #6e675c;
+  --danger: #b42318;
+  --shadow-soft: 0 10px 30px rgba(31, 31, 31, 0.08);
 }
