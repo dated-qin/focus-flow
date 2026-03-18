@@ -1,0 +1,18 @@
+@import "./variables.css";
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top right, #fff7e8 0%, var(--bg) 45%);
+  color: var(--fg);
+}
+
+.top-nav {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+}
+
+.page {
+  padding: 16px;
+}
